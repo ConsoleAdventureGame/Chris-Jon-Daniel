@@ -41,29 +41,24 @@ public class ConsoleAdventureGame {
         // Choices for User
         System.out.println("What do you do?");
         System.out.println("1 Attack");
-        System.out.println("2 Defend");
-        System.out.println("3 Drink Potion");
-        System.out.println("4 Run Away");
+        System.out.println("2 Drink Potion");
+        System.out.println("3 Run Away");
         int action = scanner.nextInt();
 
         // Attack
         if (action == 1) {
             System.out.println("Attack!");
-        }
-
-        // Defend
-        else if (action == 2) {
-            System.out.println("Defend");
-
+            goblinOne.enemyHealth = goblinOne.enemyHealth - 10;
+            System.out.println("Enemy health is now " + goblinOne.enemyHealth);
         }
 
         // Drink Potion
-        else if (action == 3) {
+        else if (action == 2) {
             System.out.println("Drink up");
         }
 
         // Escape
-        else if (action == 4) {
+        else if (action == 3) {
             System.out.println("You ran away....");
         } else {
             System.out.println("Chose a number!");
@@ -71,8 +66,12 @@ public class ConsoleAdventureGame {
         }
 
         // Enemy Turn
-
-
+//        enemyAttack();
     }
+
+//    public static void enemyAttack() {
+//
+//    }
+
 
 }
