@@ -15,17 +15,16 @@ public class ConsoleAdventureGame {
         String toPlay = scanner.nextLine();
 
         // Initialize Game
-        if(toPlay.equalsIgnoreCase("yes")){
+        if (toPlay.equalsIgnoreCase("yes")) {
             System.out.println("What is your name?");
             name = scanner.nextLine();
 
             ourHero.name = name;
-            System.out.println("Hello " + ourHero.name +  "\nHealth is: " + ourHero.health);
+            System.out.println("Hello " + ourHero.name + "\nHealth is: " + ourHero.health);
             turn();
         } else {
             System.out.println("Come back when you are ready.");
         }
-
 
 
     }
@@ -33,6 +32,12 @@ public class ConsoleAdventureGame {
     // User Choice
     public static void turn() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the dungeon! A goblin has appeared!");
+
+        // enemy
+        goblin goblinOne = new goblin();
+
+
         // Choices for User
         System.out.println("What do you do?");
         System.out.println("1 Attack");
@@ -42,25 +47,32 @@ public class ConsoleAdventureGame {
         int action = scanner.nextInt();
 
         // Attack
-        if(action == 1) {
+        if (action == 1) {
             System.out.println("Attack!");
         }
+
         // Defend
-        else if(action == 2) {
+        else if (action == 2) {
             System.out.println("Defend");
+
         }
+
         // Drink Potion
-        else if(action == 3) {
+        else if (action == 3) {
             System.out.println("Drink up");
         }
+
         // Escape
-        else if(action == 4) {
+        else if (action == 4) {
             System.out.println("You ran away....");
-        }
-        else {
+        } else {
             System.out.println("Chose a number!");
             turn();
         }
 
+        // Enemy Turn
+
+
     }
+
 }
