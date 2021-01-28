@@ -88,8 +88,8 @@ public class ConsoleAdventureGame {
 
         // Game Variables //
         // Enemies variable, string array
-        String[] enemies = {"Bat", "Ghoul", "Goblin", "Necromancer"};
-        String[] enemyAttacks = {"Bites", "Drools on", "Punches", "Curses"};
+        String[] enemies = {"Donkey", "A Cat With a Sword", "Lord Farquaad", "Fairy Godmother", "Dragon"};
+        String[] enemyAttacks = {"Bites", "Stabs", "Tortures", "Curses", "Scorches"};
 
         // Enemy Health Variable
         int maxEnemyHealth = 75;
@@ -264,8 +264,11 @@ public class ConsoleAdventureGame {
                         "             \\           '    ,' \n" +
                         "              `.       ,   _,' \n" +
                         "                `-.___.---' ");
+                System.out.println("#########################");
                 System.out.println(" # You have been slain # ");
+                System.out.println("#########################");
                 System.out.println(" # This is my swamp # ");
+                System.out.println("#########################");
                 break;
             }
 
@@ -289,7 +292,7 @@ public class ConsoleAdventureGame {
             }
             // If player chooses 1 or 2
             if (input.equals("1")) {
-                System.out.println("You continue further into the Forest.....");
+                System.out.println("You continue further into the Swamp.....");
             } else if (input.equals("2")) {
                 System.out.println("You left the Swamp....");
                 break;
