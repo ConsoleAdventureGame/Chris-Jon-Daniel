@@ -145,6 +145,14 @@ public class ConsoleAdventureGame {
                     if (health < 1) {
                         System.out.println("\t> You have taken too much damage to continue!");
                         break;
+                    } else if(enemyHealth <= 0){
+                        System.out.println(" # " + enemy + " was defeated! #");
+                        if(rand.nextInt(100) < healthPotionDropChance) {
+                            numHealthPotions++;
+                            System.out.println(" # The " + enemy + " dropped a health potion. # ");
+                            System.out.println(" # You have " + numHealthPotions + " health potion(s).");
+                        }
+                        break;
                     }
                     // Drink Health Potion //
                 } else if (input.equals("2")) {
@@ -162,12 +170,15 @@ public class ConsoleAdventureGame {
                     // For running away //
                 } else if (input.equals("3")) {
                     System.out.println("\t> You ran away from the " + enemy + "!");
-                    continue GAME; // goes back to start of loop (GAME) if running away is true
+//                    continue GAME; // goes back to start of loop (GAME) if running away is true
+                    break;
                 } else {
                     // If user enters something else
                     System.out.println("\tInvalid command.");
                 }
             }
+
+
             // Health gets too low //
             if (health < 1) {
                 System.out.println("You have been slain....");
@@ -175,15 +186,16 @@ public class ConsoleAdventureGame {
             }
 
             System.out.println("----------------------");
-            // if enemy was defeated (health was not too low
-            System.out.println(" # " + enemy + " was defeated! #");
+
             System.out.println(" # You have " + health + " HP left. #");
             // If enemy drops a health potion after being defeated (50% chance)
-            if(rand.nextInt(100) < healthPotionDropChance) {
-                numHealthPotions++;
-                System.out.println(" # The " + enemy + " dropped a health potion. # ");
-                System.out.println(" # You have " + numHealthPotions + " health potion(s).");
-            }
+
+//            if(rand.nextInt(100) < healthPotionDropChance) {
+//                numHealthPotions++;
+//                System.out.println(" # The " + enemy + " dropped a health potion. # ");
+//                System.out.println(" # You have " + numHealthPotions + " health potion(s).");
+//            }
+
             System.out.println("----------------------");
             // Next Adventure Options
             System.out.println("What would you like to do?");
