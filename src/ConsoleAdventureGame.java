@@ -178,12 +178,33 @@ public class ConsoleAdventureGame {
                     // Drink Health Potion //
                 } else if (input.equals("2")) {
                     // check for health potion
-                    if (numHealthPotions > 0) {
+                    if(health == 100){
+                        System.out.println("Your health is Full!");
+
+                        int damageTaken = rand.nextInt(enemyAttackDamage);
+
+                        health -= damageTaken;
+                        System.out.println("\t>" + enemy + " " + enemyAttack + " you! You take " + damageTaken + " damage" +
+                                "!");
+                        if (health < 1) {
+
+                            System.out.println("\t> You have taken too much damage to continue!");
+                            break;
+                        }
+                    }
+                    else if (numHealthPotions > 0) {
                         // Add to your health
-                        health += healthPotionHealAmount;
+                        int actualHeal = healthPotionHealAmount;
+                        if(health + healthPotionHealAmount > 100){
+                            actualHeal = 100 - health;
+                            health = 100;
+
+                        } else {
+                            health += healthPotionHealAmount;
+                        }
                         // Take one health potion away
                         numHealthPotions--;
-                        System.out.println("\t> You drink a health potion, +" + healthPotionHealAmount + "." + "\n\t>" +
+                        System.out.println("\t> You drink a health potion, +" + actualHeal + "." + "\n\t>" +
                                 " You now have " + health + " HP" + "\n\t> You have " + numHealthPotions + " Health " +
                                 "potions left.\n");
 
