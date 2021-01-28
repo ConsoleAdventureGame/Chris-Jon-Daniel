@@ -139,23 +139,27 @@ public class ConsoleAdventureGame {
                     int damageTaken = rand.nextInt(enemyAttackDamage);
                     // Take the damage off
                     enemyHealth -= damageDealt;
-                    health -= damageTaken;
 
                     // Attack print
                     System.out.println("\t>1 You attack " + enemy + " for " + damageDealt + " damage.");
-                    System.out.println(enemy +  " " +  enemyAttack + " you! You take " + damageTaken + " damage!");
 
-                    // Health Low Print
-                    if (health < 1) {
-                        System.out.println("\t> You have taken too much damage to continue!");
-                        break;
-                    } else if(enemyHealth <= 0){
+                    if(enemyHealth <= 0){
                         System.out.println(" # " + enemy + " was defeated! #");
                         if(rand.nextInt(100) < healthPotionDropChance) {
                             numHealthPotions++;
                             System.out.println(" # The " + enemy + " dropped a health potion. # ");
                             System.out.println(" # You have " + numHealthPotions + " health potion(s).");
                         }
+                        break;
+                    }
+
+                    health -= damageTaken;
+                    System.out.println("\t>" + enemy +  " " +  enemyAttack + " you! You take " + damageTaken + " damage!");
+
+                    // Health Low Print
+                    if (health < 1) {
+
+                        System.out.println("\t> You have taken too much damage to continue!");
                         break;
                     }
                     // Drink Health Potion //
@@ -166,7 +170,7 @@ public class ConsoleAdventureGame {
                         health += healthPotionHealAmount;
                         // Take one health potion away
                         numHealthPotions--;
-                        System.out.println("\t> YOu drink a health potion, +" + healthPotionHealAmount + "." + "\n\t> You now have " + health + " HP" + "\n\t> You have " +                            numHealthPotions + " Health potions left.\n");
+                        System.out.println("\t> You drink a health potion, +" + healthPotionHealAmount + "." + "\n\t> You now have " + health + " HP" + "\n\t> You have " +                            numHealthPotions + " Health potions left.\n");
                     } else {
                         // no health potions
                         System.out.println("\t> You have no health potions left, defeat enemies to try and recover one!");
