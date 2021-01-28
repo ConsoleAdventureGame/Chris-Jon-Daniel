@@ -103,6 +103,7 @@ public class ConsoleAdventureGame {
         int numHealthPotions = 4;
         int healthPotionHealAmount = 30;
         int healthPotionDropChance = 50; // 50 Percent chance to drop a health potion
+        int swordDropChance = 50;
 
         // Running Variable, game keeps running unless there is a condition for it to stop (while loop)
         boolean running = true;
@@ -112,7 +113,8 @@ public class ConsoleAdventureGame {
         GAME:
         while (running) {
             System.out.println("----------------------");
-            // Start Combat with Enemy, uses random generator, picks number from 1 to maxEnemyHealth variable, in this case 75
+            // Start Combat with Enemy, uses random generator, picks number from 1 to maxEnemyHealth variable, in
+            // this case 75
             int enemyHealth = rand.nextInt(maxEnemyHealth);
             // Random enemy generated
             int enemySelector = rand.nextInt(enemies.length);
@@ -143,7 +145,7 @@ public class ConsoleAdventureGame {
                     // Attack print
                     System.out.println("\t>1 You attack " + enemy + " for " + damageDealt + " damage.");
 
-                    if(enemyHealth <= 0){
+                    if (enemyHealth <= 0) {
                         System.out.println(" # " + enemy + " was defeated! #");
 //                        if(rand.nextInt(100) < healthPotionDropChance) {
 //                            numHealthPotions++;
@@ -152,8 +154,8 @@ public class ConsoleAdventureGame {
 //                        }
 //                        break;
 //                    }
-                        if(rand.nextInt(100) < healthPotionDropChance) {
-                            if(numHealthPotions < 4) {
+                        if (rand.nextInt(100) < healthPotionDropChance) {
+                            if (numHealthPotions < 4) {
                                 numHealthPotions++;
                                 System.out.println(" # The " + enemy + " dropped a health potion. # ");
                                 System.out.println(" # You have " + numHealthPotions + " health potion(s).");
@@ -161,11 +163,17 @@ public class ConsoleAdventureGame {
                                 System.out.println(" # The " + enemy + " dropped a health potion. # ");
                                 System.out.println(" # Your pack is full! # ");
                             }
+                            if (rand.nextInt(100) < swordDropChance) {
+                                attackDamage = attackDamage + 5;
+                                System.out.println(" # You leveled up. # ");
+                                System.out.println(" # Your base attack is  " + attackDamage);
+                            }
                         }
                         break;
                     }
                     health -= damageTaken;
-                    System.out.println("\t>" + enemy +  " " +  enemyAttack + " you! You take " + damageTaken + " damage!");
+                    System.out.println("\t>" + enemy + " " + enemyAttack + " you! You take " + damageTaken + " damage" +
+                            "!");
 
                     // Health Low Print
                     if (health < 1) {
@@ -181,10 +189,13 @@ public class ConsoleAdventureGame {
                         health += healthPotionHealAmount;
                         // Take one health potion away
                         numHealthPotions--;
-                        System.out.println("\t> You drink a health potion, +" + healthPotionHealAmount + "." + "\n\t> You now have " + health + " HP" + "\n\t> You have " +                            numHealthPotions + " Health potions left.\n");
+                        System.out.println("\t> You drink a health potion, +" + healthPotionHealAmount + "." + "\n\t>" +
+                                " You now have " + health + " HP" + "\n\t> You have " + numHealthPotions + " Health " +
+                                "potions left.\n");
                     } else {
                         // no health potions
-                        System.out.println("\t> You have no health potions left, defeat enemies to try and recover one!");
+                        System.out.println("\t> You have no health potions left, defeat enemies to try and recover " +
+                                "one!");
                     }
                     // For running away //
                 } else if (input.equals("3")) {
@@ -224,14 +235,14 @@ public class ConsoleAdventureGame {
             // Run loop based on user's input
             String input = in.nextLine();
             // If player input is not 1 or 2
-            while(!input.equals("1") && !input.equals("2")) {
+            while (!input.equals("1") && !input.equals("2")) {
                 System.out.println("Invalid command!");
                 input = in.nextLine();
             }
             // If player chooses 1 or 2
-            if(input.equals("1")) {
+            if (input.equals("1")) {
                 System.out.println("You continue further into the Forest.....");
-            } else if(input.equals("2")) {
+            } else if (input.equals("2")) {
                 System.out.println("You left the Dark Forest.");
                 break;
             }
@@ -241,7 +252,6 @@ public class ConsoleAdventureGame {
         System.out.println(" # THANKS FOR PLAYING! # ");
         System.out.println("#########################");
     }
-
 
 
 //    // User Choice
@@ -280,14 +290,13 @@ public class ConsoleAdventureGame {
 //            turn();
 //        }
 
-        // Enemy Turn
+    // Enemy Turn
 //        enemyAttack();
-    }
+}
 
 //    public static void enemyAttack() {
 //
 //    }
-
 
 
 //}
