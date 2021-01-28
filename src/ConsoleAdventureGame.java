@@ -79,10 +79,12 @@ import java.util.Scanner;
 public class ConsoleAdventureGame {
     public static void main(String[] args) {
 
+
         // System objects //
         Scanner in = new Scanner(System.in);
         // Random number object generator
         Random rand = new Random();
+
 
         // Game Variables //
         // Enemies variable, string array
