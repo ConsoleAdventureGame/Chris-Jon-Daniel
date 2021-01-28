@@ -92,6 +92,7 @@ public class ConsoleAdventureGame {
         // Enemy Attack Damage Variable
         int enemyAttackDamage = 25;
 
+
         // Player Variables //
         int health = 100;
         int attackDamage = 50;
