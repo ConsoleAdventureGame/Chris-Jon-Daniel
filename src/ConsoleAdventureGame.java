@@ -108,7 +108,7 @@ public class ConsoleAdventureGame {
         // Running Variable, game keeps running unless there is a condition for it to stop (while loop)
         boolean running = true;
 
-        System.out.println("Welcome to the Dark Forest!");
+        System.out.println("♞ Welcome to the Swamp! ♞");
         // GAME is the label of the while loop
         GAME:
         while (running) {
@@ -178,7 +178,7 @@ public class ConsoleAdventureGame {
                     // Drink Health Potion //
                 } else if (input.equals("2")) {
                     // check for health potion
-                    if(health == 100){
+                    if (health == 100) {
                         System.out.println("Your health is Full!");
 
                         int damageTaken = rand.nextInt(enemyAttackDamage);
@@ -191,11 +191,10 @@ public class ConsoleAdventureGame {
                             System.out.println("\t> You have taken too much damage to continue!");
                             break;
                         }
-                    }
-                    else if (numHealthPotions > 0) {
+                    } else if (numHealthPotions > 0) {
                         // Add to your health
                         int actualHeal = healthPotionHealAmount;
-                        if(health + healthPotionHealAmount > 100){
+                        if (health + healthPotionHealAmount > 100) {
                             actualHeal = 100 - health;
                             health = 100;
 
@@ -238,7 +237,35 @@ public class ConsoleAdventureGame {
 
             // Health gets too low //
             if (health < 1) {
-                System.out.println("You have been slain....");
+                System.out.println();
+                System.out.println("             ,-'     `._ \n" +
+                        "                 ,'           `.        ,-. \n" +
+                        "               ,'               \\       ),.\\ \n" +
+                        "     ,.       /                  \\     /(  \\; \n" +
+                        "    /'\\\\     ,o.        ,ooooo.   \\  ,'  `-') \n" +
+                        "    )) )`. d8P\"Y8.    ,8P\"\"\"\"\"Y8.  `'  .--\"' \n" +
+                        "   (`-'   `Y'  `Y8    dP       `'     / \n" +
+                        "    `----.(   __ `    ,' ,---.       ( \n" +
+                        "           ),--.`.   (  ;,---.        ) \n" +
+                        "          / \\O_,' )   \\  \\O_,'        | \n" +
+                        "         ;  `-- ,'       `---'        | \n" +
+                        "         |    -'         `.           | \n" +
+                        "        _;    ,            )          : \n" +
+                        "     _.'|     `.:._   ,.::\" `..       | \n" +
+                        "  --'   |   .'     \"\"\"         `      |`. \n" +
+                        "        |  :;      :   :     _.       |`.`.-'--. \n" +
+                        "        |  ' .     :   :__.,'|/       |  \\ \n" +
+                        "        `     \\--.__.-'|_|_|-/        /   ) \n" +
+                        "         \\     \\_   `--^\"__,'        ,    | \n" +
+                        "   -hrr- ;  `    `--^---'          ,'     | \n" +
+                        "          \\  `                    /      / \n" +
+                        "           \\   `    _ _          / \n" +
+                        "            \\           `       / \n" +
+                        "             \\           '    ,' \n" +
+                        "              `.       ,   _,' \n" +
+                        "                `-.___.---' ");
+                System.out.println(" # You have been slain # ");
+                System.out.println(" # This is my swamp # ");
                 break;
             }
 
@@ -251,7 +278,7 @@ public class ConsoleAdventureGame {
             // Next Adventure Options
             System.out.println("What would you like to do?");
             System.out.println("1. Continue fighting.");
-            System.out.println("2. Leave the Dark Forest.");
+            System.out.println("2. Leave the Swamp.");
 
             // Run loop based on user's input
             String input = in.nextLine();
@@ -264,7 +291,7 @@ public class ConsoleAdventureGame {
             if (input.equals("1")) {
                 System.out.println("You continue further into the Forest.....");
             } else if (input.equals("2")) {
-                System.out.println("You left the Dark Forest.");
+                System.out.println("You left the Swamp....");
                 break;
             }
         }
