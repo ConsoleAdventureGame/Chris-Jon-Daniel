@@ -145,14 +145,25 @@ public class ConsoleAdventureGame {
 
                     if(enemyHealth <= 0){
                         System.out.println(" # " + enemy + " was defeated! #");
+//                        if(rand.nextInt(100) < healthPotionDropChance) {
+//                            numHealthPotions++;
+//                            System.out.println(" # The " + enemy + " dropped a health potion. # ");
+//                            System.out.println(" # You have " + numHealthPotions + " health potion(s).");
+//                        }
+//                        break;
+//                    }
                         if(rand.nextInt(100) < healthPotionDropChance) {
-                            numHealthPotions++;
-                            System.out.println(" # The " + enemy + " dropped a health potion. # ");
-                            System.out.println(" # You have " + numHealthPotions + " health potion(s).");
+                            if(numHealthPotions < 4) {
+                                numHealthPotions++;
+                                System.out.println(" # The " + enemy + " dropped a health potion. # ");
+                                System.out.println(" # You have " + numHealthPotions + " health potion(s).");
+                            } else {
+                                System.out.println(" # The " + enemy + " dropped a health potion. # ");
+                                System.out.println(" # Your pack is full! # ");
+                            }
                         }
                         break;
                     }
-
                     health -= damageTaken;
                     System.out.println("\t>" + enemy +  " " +  enemyAttack + " you! You take " + damageTaken + " damage!");
 
