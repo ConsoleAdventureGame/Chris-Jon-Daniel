@@ -89,6 +89,8 @@ public class ConsoleAdventureGame {
         // Game Variables //
         // Enemies variable, string array
         String[] enemies = {"Bat", "Ghoul", "Goblin", "Necromancer"};
+        String[] enemyAttacks = {"Bites", "Drools on", "Punches", "Curses"};
+
         // Enemy Health Variable
         int maxEnemyHealth = 75;
         // Enemy Attack Damage Variable
@@ -113,7 +115,9 @@ public class ConsoleAdventureGame {
             // Start Combat with Enemy, uses random generator, picks number from 1 to maxEnemyHealth variable, in this case 75
             int enemyHealth = rand.nextInt(maxEnemyHealth);
             // Random enemy generated
-            String enemy = enemies[rand.nextInt(enemies.length)];
+            int enemySelector = rand.nextInt(enemies.length);
+            String enemy = enemies[enemySelector];
+            String enemyAttack = enemyAttacks[enemySelector];
             System.out.println("\t# " + enemy + " appeared! #\n");
             //  # Ghoul has appeared! #
 
@@ -139,7 +143,7 @@ public class ConsoleAdventureGame {
 
                     // Attack print
                     System.out.println("\t>1 You attack " + enemy + " for " + damageDealt + " damage.");
-                    System.out.println("\t> You receive " + damageTaken);
+                    System.out.println(enemy +  " " +  enemyAttack + " you! You take " + damageTaken + " damage!");
 
                     // Health Low Print
                     if (health < 1) {
