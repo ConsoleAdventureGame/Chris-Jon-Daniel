@@ -147,13 +147,7 @@ public class ConsoleAdventureGame {
 
                     if (enemyHealth <= 0) {
                         System.out.println(" # " + enemy + " was defeated! #");
-//                        if(rand.nextInt(100) < healthPotionDropChance) {
-//                            numHealthPotions++;
-//                            System.out.println(" # The " + enemy + " dropped a health potion. # ");
-//                            System.out.println(" # You have " + numHealthPotions + " health potion(s).");
-//                        }
-//                        break;
-//                    }
+
                         if (rand.nextInt(100) < healthPotionDropChance) {
                             if (numHealthPotions < 4) {
                                 numHealthPotions++;
@@ -192,6 +186,19 @@ public class ConsoleAdventureGame {
                         System.out.println("\t> You drink a health potion, +" + healthPotionHealAmount + "." + "\n\t>" +
                                 " You now have " + health + " HP" + "\n\t> You have " + numHealthPotions + " Health " +
                                 "potions left.\n");
+
+
+//                        ENEMY ATTACK
+                        int damageTaken = rand.nextInt(enemyAttackDamage);
+
+                        health -= damageTaken;
+                        System.out.println("\t>" + enemy + " " + enemyAttack + " you! You take " + damageTaken + " damage" +
+                                "!");
+                        if (health < 1) {
+
+                            System.out.println("\t> You have taken too much damage to continue!");
+                            break;
+                        }
                     } else {
                         // no health potions
                         System.out.println("\t> You have no health potions left, defeat enemies to try and recover " +
@@ -200,7 +207,6 @@ public class ConsoleAdventureGame {
                     // For running away //
                 } else if (input.equals("3")) {
                     System.out.println("\t> You ran away from the " + enemy + "!");
-//                    continue GAME; // goes back to start of loop (GAME) if running away is true
                     break;
                 } else {
                     // If user enters something else
@@ -218,13 +224,7 @@ public class ConsoleAdventureGame {
             System.out.println("----------------------");
 
             System.out.println(" # You have " + health + " HP left. #");
-            // If enemy drops a health potion after being defeated (50% chance)
 
-//            if(rand.nextInt(100) < healthPotionDropChance) {
-//                numHealthPotions++;
-//                System.out.println(" # The " + enemy + " dropped a health potion. # ");
-//                System.out.println(" # You have " + numHealthPotions + " health potion(s).");
-//            }
 
             System.out.println("----------------------");
             // Next Adventure Options
@@ -253,51 +253,4 @@ public class ConsoleAdventureGame {
         System.out.println("#########################");
     }
 
-
-//    // User Choice
-//    public static void turn() {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Welcome to the dungeon! A goblin has appeared!");
-//
-//        // enemy
-//        goblin goblinOne = new goblin();
-//
-//
-//        // Choices for User
-//        System.out.println("What do you do?");
-//        System.out.println("1 Attack");
-//        System.out.println("2 Drink Potion");
-//        System.out.println("3 Run Away");
-//        int action = scanner.nextInt();
-//
-//        // Attack
-//        if (action == 1) {
-//            System.out.println("Attack!");
-//            goblinOne.enemyHealth = goblinOne.enemyHealth - 10;
-//            System.out.println("Enemy health is now " + goblinOne.enemyHealth);
-//        }
-//
-//        // Drink Potion
-//        else if (action == 2) {
-//            System.out.println("Drink up");
-//        }
-//
-//        // Escape
-//        else if (action == 3) {
-//            System.out.println("You ran away....");
-//        } else {
-//            System.out.println("Chose a number!");
-//            turn();
-//        }
-
-    // Enemy Turn
-//        enemyAttack();
 }
-
-//    public static void enemyAttack() {
-//
-//    }
-
-
-//}
-
