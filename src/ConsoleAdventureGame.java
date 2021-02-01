@@ -88,13 +88,15 @@ public class ConsoleAdventureGame {
 
         // Game Variables //
         // Enemies variable, string array
-        String[] enemies = {"Donkey", "A Cat With a Sword", "Lord Farquaad", "Fairy Godmother", "Dragon"};
+
+
+//        String[] enemies = {"Donkey", "A Cat With a Sword", "Lord Farquaad", "Fairy Godmother", "Dragon"};
         String[] enemyAttacks = {"Bites", "Stabs", "Tortures", "Curses", "Scorches"};
 
         // Enemy Health Variable
-        int maxEnemyHealth = 75;
+//        int maxEnemyHealth = 75;
         // Enemy Attack Damage Variable
-        int enemyAttackDamage = 25;
+//        int enemyAttackDamage = 25;
 
 
         // Player Variables //
@@ -114,19 +116,46 @@ public class ConsoleAdventureGame {
         while (running) {
             System.out.println("----------------------");
             // Start Combat with Enemy, uses random generator, picks number from 1 to maxEnemyHealth variable, in
-            // this case 75
-            int enemyHealth = rand.nextInt(maxEnemyHealth);
+
+            int enemySelector = rand.nextInt(5);
+            Enemy enemy = null;
+            int enemyHealth = 0;
+
+            if(enemySelector == 1){
+                enemy = new Donkey();
+                enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 10;
+            } else if(enemySelector == 2) {
+                    enemy = new Cat();
+                enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 20;
+            } else if (enemySelector == 3){
+                enemy = new Farquad();
+                enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 5;
+            } else if (enemySelector == 4){
+                enemy = new Godmother();
+                enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 10;
+            } else {
+                enemy = new Dragon();
+                enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 40;
+            }
+
+//            String enemy = enemies[enemySelector];
+
+
             // Random enemy generated
-            int enemySelector = rand.nextInt(enemies.length);
-            String enemy = enemies[enemySelector];
-            String enemyAttack = enemyAttacks[enemySelector];
-            System.out.println("\t# " + enemy + " appeared! #\n");
+
+
+//            int enemySelector = rand.nextInt(enemies.length);
+//            String enemy = enemies[enemySelector];
+//            String enemyAttack = enemyAttacks[enemySelector];
+
+
+            System.out.println("\t# " + enemy.name + " appeared! #\n");
             //  # Ghoul has appeared! #
 
             // Give player options while enemy is alive
             while (enemyHealth > 0) {
                 System.out.println("\tYour HP: " + health);
-                System.out.println("\t" + enemy + "'s HP: " + enemyHealth);
+                System.out.println("\t" + enemy.name + "'s HP: " + enemyHealth);
                 System.out.println("\n\tWhat would you like to do?");
                 System.out.println("\t1 Attack");
                 System.out.println("\t2 Drink Health Potion");
@@ -138,23 +167,23 @@ public class ConsoleAdventureGame {
                     // generate random damage between 1 & 50
                     int damageDealt = rand.nextInt(attackDamage);
                     //  generate random damage taken
-                    int damageTaken = rand.nextInt(enemyAttackDamage);
+                    int damageTaken = rand.nextInt(enemy.enemyAttackDamage);
                     // Take the damage off
                     enemyHealth -= damageDealt;
 
                     // Attack print
-                    System.out.println("\t>1 You attack " + enemy + " for " + damageDealt + " damage.");
+                    System.out.println("\t>1 You attack " + enemy.name + " for " + damageDealt + " damage.");
 
                     if (enemyHealth <= 0) {
-                        System.out.println(" # " + enemy + " was defeated! #");
+                        System.out.println(" # " + enemy.name + " was defeated! #");
 
                         if (rand.nextInt(100) < healthPotionDropChance) {
                             if (numHealthPotions < 4) {
                                 numHealthPotions++;
-                                System.out.println(" # The " + enemy + " dropped a health potion. # ");
+                                System.out.println(" # The " + enemy.name + " dropped a health potion. # ");
                                 System.out.println(" # You have " + numHealthPotions + " health potion(s).");
                             } else {
-                                System.out.println(" # The " + enemy + " dropped a health potion. # ");
+                                System.out.println(" # The " + enemy.name + " dropped a health potion. # ");
                                 System.out.println(" # Your pack is full! # ");
                             }
                             if (rand.nextInt(100) < swordDropChance) {
@@ -166,7 +195,7 @@ public class ConsoleAdventureGame {
                         break;
                     }
                     health -= damageTaken;
-                    System.out.println("\t>" + enemy + " " + enemyAttack + " you! You take " + damageTaken + " damage" +
+                    System.out.println("\t>" + enemy.name + " " + enemy.specialAttack + " you! You take " + damageTaken + " damage" +
                             "!");
 
                     // Health Low Print
@@ -181,10 +210,10 @@ public class ConsoleAdventureGame {
                     if (health == 100) {
                         System.out.println("Your health is Full!");
 
-                        int damageTaken = rand.nextInt(enemyAttackDamage);
+                        int damageTaken = rand.nextInt(enemy.enemyAttackDamage);
 
                         health -= damageTaken;
-                        System.out.println("\t>" + enemy + " " + enemyAttack + " you! You take " + damageTaken + " damage" +
+                        System.out.println("\t>" + enemy.name + " " + enemy.specialAttack + " you! You take " + damageTaken + " damage" +
                                 "!");
                         if (health < 1) {
 
@@ -209,10 +238,10 @@ public class ConsoleAdventureGame {
 
 
 //                        ENEMY ATTACK
-                        int damageTaken = rand.nextInt(enemyAttackDamage);
+                        int damageTaken = rand.nextInt(enemy.enemyAttackDamage);
 
                         health -= damageTaken;
-                        System.out.println("\t>" + enemy + " " + enemyAttack + " you! You take " + damageTaken + " damage" +
+                        System.out.println("\t>" + enemy.name + " " + enemy.specialAttack + " you! You take " + damageTaken + " damage" +
                                 "!");
                         if (health < 1) {
 
@@ -226,7 +255,7 @@ public class ConsoleAdventureGame {
                     }
                     // For running away //
                 } else if (input.equals("3")) {
-                    System.out.println("\t> You ran away from the " + enemy + "!");
+                    System.out.println("\t> You ran away from the " + enemy.name + "!");
                     break;
                 } else {
                     // If user enters something else

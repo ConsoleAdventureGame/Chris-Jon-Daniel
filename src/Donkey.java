@@ -1,6 +1,10 @@
-public class Donkey {
-    String name = "Donkey";
-    int maxEnemyHealth = 30;
-    int enemyAttackDamage = 20;
-    String specialAttack = "Bites";
+public class Donkey extends Enemy {
+
+
+    public Donkey(){
+        name = "Donkey";
+        maxEnemyHealth = 20;
+        enemyAttackDamage = 40;
+        specialAttack = "Bites";
+    }
 }

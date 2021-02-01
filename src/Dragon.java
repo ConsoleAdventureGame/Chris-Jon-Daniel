@@ -1,6 +1,9 @@
-public class Dragon {
-    String name = "Dragon";
-    int maxEnemyHealth = 80;
-    int enemyAttackDamage = 100;
-    String specialAttack = "Scorches";
+public class Dragon extends Enemy{
+
+    public Dragon(){
+        name = "Dragon";
+        maxEnemyHealth = 40;
+        enemyAttackDamage = 100;
+        specialAttack = "Scorches";
+    }
 }
