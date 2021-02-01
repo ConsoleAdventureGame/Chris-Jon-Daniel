@@ -1,8 +1,10 @@
-//public class Hero {
-//    int health = 100;
-//    int strength = 20;
-//    int defense = 15;
-//    int healthPotion = 5;
-//    int healAmount = 30;
-//    String name = "";
-//}
+public class Hero {
+    int health = 100;
+    int attackDamage = 30;
+
+    int numHealthPotions = 4;
+    int healthPotionHealAmount = 30;
+    int healthPotionDropChance = 50; // 50 Percent chance to drop a health potion
+    int levelUpChance = 50;
+    String name = "";
+}
