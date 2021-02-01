@@ -93,12 +93,13 @@ public class ConsoleAdventureGame {
         boolean running = true;
 
         System.out.println("♞ Welcome to the Swamp " + player.name + "! ♞");
-        // GAME is the label of the while loop
+
 //        GAME:
         while (running) {
             System.out.println("----------------------");
             // Start Combat with Enemy, uses random generator, picks number from 1 to maxEnemyHealth variable, in
 
+//            MAKE RANDOM ENEMY
             int enemySelector = rand.nextInt(5);
             Enemy enemy = null;
             int enemyHealth = 0;
@@ -120,19 +121,9 @@ public class ConsoleAdventureGame {
                 enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 40;
             }
 
-//            String enemy = enemies[enemySelector];
-
 
             // Random enemy generated
-
-
-//            int enemySelector = rand.nextInt(enemies.length);
-//            String enemy = enemies[enemySelector];
-//            String enemyAttack = enemyAttacks[enemySelector];
-
-
             System.out.println("\t# " + enemy.name + " appeared! #\n");
-            //  # Ghoul has appeared! #
 
             // Give player options while enemy is alive
             while (enemyHealth > 0) {
