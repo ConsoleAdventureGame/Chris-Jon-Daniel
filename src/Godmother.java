@@ -1,6 +1,9 @@
-public class Godmother {
-    String name = "Fairy Godmother";
-    int maxEnemyHealth = 20;
-    int enemyAttackDamage = 80;
-    String specialAttack = "Curses";
+public class Godmother extends Enemy{
+
+    public Godmother(){
+        name = "Fairy Godmother";
+        maxEnemyHealth = 10;
+        enemyAttackDamage = 80;
+        specialAttack = "Curses";
+    }
 }

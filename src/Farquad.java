@@ -1,6 +1,9 @@
-public class Farquad {
-    String name = "Lord Farquad";
-    int maxEnemyHealth = 15;
-    int enemyAttackDamage = 10;
-    String specialAttack = "Tortures";
+public class Farquad extends Enemy {
+
+    public Farquad(){
+        name = "Lord Farquad";
+        maxEnemyHealth = 10;
+        enemyAttackDamage = 10;
+        specialAttack = "Tortures";
+    }
 }
