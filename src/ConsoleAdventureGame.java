@@ -331,6 +331,7 @@ public class ConsoleAdventureGame {
             if(player.toNextLevel - spillover <= 0){
                 levelUp(player, spillover);
             } else {
+                player.toNextLevel -= spillover;
                 System.out.println("# " + player.toNextLevel + "exp to level up.\n");
             }
         } else {

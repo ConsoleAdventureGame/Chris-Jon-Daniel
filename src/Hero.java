@@ -12,4 +12,5 @@ public class Hero {
 //    LEVEL UP
     int baseLevel = 1000;
     int toNextLevel = 1000;
+    int totalExperience = 0;
 }

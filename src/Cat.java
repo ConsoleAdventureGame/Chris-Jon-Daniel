@@ -9,6 +9,6 @@ public class Cat extends Enemy {
         maxEnemyHealth = 20;
         enemyAttackDamage = 30;
         specialAttack = "Stabs";
-        int experienceYield = 3000;
+        experienceYield = 500;
     }
 }

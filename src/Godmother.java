@@ -5,6 +5,6 @@ public class Godmother extends Enemy{
         maxEnemyHealth = 10;
         enemyAttackDamage = 80;
         specialAttack = "Curses";
-        int experienceYield = 3000;
+        experienceYield = 1000;
     }
 }
