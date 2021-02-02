@@ -6,5 +6,6 @@ public class Donkey extends Enemy {
         maxEnemyHealth = 20;
         enemyAttackDamage = 40;
         specialAttack = "Bites";
+        experienceYield = 600;
     }
 }

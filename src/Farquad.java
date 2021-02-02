@@ -5,5 +5,6 @@ public class Farquad extends Enemy {
         maxEnemyHealth = 10;
         enemyAttackDamage = 10;
         specialAttack = "Tortures";
+        experienceYield = 250;
     }
 }

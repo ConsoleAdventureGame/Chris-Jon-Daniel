@@ -5,5 +5,6 @@ public class Dragon extends Enemy{
         maxEnemyHealth = 40;
         enemyAttackDamage = 100;
         specialAttack = "Scorches";
+        experienceYield = 3000;
     }
 }
