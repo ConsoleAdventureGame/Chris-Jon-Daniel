@@ -320,6 +320,7 @@ public class ConsoleAdventureGame {
 
         if(player.toNextLevel - exp <= 0){
 //            LEVEL UP LOGIC
+            int expHolder = player.toNextLevel;
 
             player.baseLevel += 1000;
             player.toNextLevel = player.baseLevel;
@@ -329,12 +330,15 @@ public class ConsoleAdventureGame {
             player.health = player.baseHealth;
             System.out.println("# Your health is now " + player.health + "HP! #");
             if(player.toNextLevel - spillover <= 0){
+                player.totalExperience += expHolder;
                 levelUp(player, spillover);
             } else {
+                player.totalExperience += exp;
                 player.toNextLevel -= spillover;
                 System.out.println("# " + player.toNextLevel + "exp to level up.\n");
             }
         } else {
+            player.totalExperience += exp;
             player.toNextLevel -= exp;
             System.out.println("# " + player.toNextLevel + "exp to level up.\n");
         }
