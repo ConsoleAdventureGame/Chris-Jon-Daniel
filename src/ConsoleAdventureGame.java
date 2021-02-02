@@ -104,6 +104,7 @@ public class ConsoleAdventureGame {
             Enemy enemy = null;
             int enemyHealth = 0;
 
+
             if(enemySelector == 1){
                 enemy = new Donkey();
                 enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 10;
@@ -148,23 +149,7 @@ public class ConsoleAdventureGame {
                     System.out.println("\t>1 You attack " + enemy.name + " for " + damageDealt + " damage.");
 
                     if (enemyHealth <= 0) {
-                        System.out.println(" # " + enemy.name + " was defeated! #");
-
-                        if (rand.nextInt(100) < player.healthPotionDropChance) {
-                            if (player.numHealthPotions < 4) {
-                                player.numHealthPotions++;
-                                System.out.println(" # The " + enemy.name + " dropped a health potion. # ");
-                                System.out.println(" # You have " + player.numHealthPotions + " health potion(s).");
-                            } else {
-                                System.out.println(" # The " + enemy.name + " dropped a health potion. # ");
-                                System.out.println(" # Your pack is full! # ");
-                            }
-                            if (rand.nextInt(100) < player.levelUpChance) {
-                                player.attackDamage = player.attackDamage + 5;
-                                System.out.println(" # You leveled up. # ");
-                                System.out.println(" # Your base attack is  " + player.attackDamage);
-                            }
-                        }
+                        enemyDefeated(enemy, player);
                         break;
                     }
                     player.health -= damageTaken;
@@ -304,6 +289,27 @@ public class ConsoleAdventureGame {
         System.out.println("#########################");
         System.out.println(" # THANKS FOR PLAYING! # ");
         System.out.println("#########################");
+    }
+
+    public static void enemyDefeated(Enemy enemy, Hero player){
+        Random rand = new Random();
+        System.out.println(" # " + enemy.name + " was defeated! #");
+
+        if (rand.nextInt(100) < player.healthPotionDropChance) {
+            if (player.numHealthPotions < 4) {
+                player.numHealthPotions++;
+                System.out.println(" # The " + enemy.name + " dropped a health potion. # ");
+                System.out.println(" # You have " + player.numHealthPotions + " health potion(s).");
+            } else {
+                System.out.println(" # The " + enemy.name + " dropped a health potion. # ");
+                System.out.println(" # Your pack is full! # ");
+            }
+            if (rand.nextInt(100) < player.levelUpChance) {
+                player.attackDamage = player.attackDamage + 5;
+                System.out.println(" # You leveled up. # ");
+                System.out.println(" # Your base attack is  " + player.attackDamage);
+            }
+        }
     }
 
 }
