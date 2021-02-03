@@ -113,7 +113,7 @@ public class ConsoleAdventureGame {
                 enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 20;
             } else if (enemySelector == 3){
                 enemy = new Farquad();
-                enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 5;
+                enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 15;
             } else if (enemySelector == 4){
                 enemy = new Godmother();
                 enemyHealth = rand.nextInt(enemy.maxEnemyHealth) + 10;
