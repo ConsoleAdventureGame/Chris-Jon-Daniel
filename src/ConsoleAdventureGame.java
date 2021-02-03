@@ -290,7 +290,13 @@ public class ConsoleAdventureGame {
                 System.out.println("You left the Swamp....");
                 break;
             } else if(input.equals("3")){
-                System.out.println("\t> ############# \t>");
+                System.out.println("\t\n Your stats:");
+                System.out.println("\t Your health: " + player.health + " HP");
+                System.out.println("\t Maximum health: " + player.baseHealth);
+                System.out.println("\t To next level: " + player.toNextLevel + " exp.");
+                System.out.println("\t Strength: " + player.attackDamage);
+                System.out.println("\t Health potions: " + player.numHealthPotions);
+                System.out.println("\t And you have " + player.totalExperience + " total exp points");
             } else if(input.equals("4") && player.numHealthPotions > 0){
                 if(player.health == player.baseHealth){
                     System.out.println("Your health is full!");
@@ -363,12 +369,12 @@ public class ConsoleAdventureGame {
             } else {
                 player.totalExperience += exp;
                 player.toNextLevel -= spillover;
-                System.out.println("# " + player.toNextLevel + "exp to level up.\n");
+//                System.out.println("# " + player.toNextLevel + "exp to level up.\n");
             }
         } else {
             player.totalExperience += exp;
             player.toNextLevel -= exp;
-            System.out.println("# " + player.toNextLevel + " exp to level up.\n");
+//            System.out.println("# " + player.toNextLevel + " exp to level up.\n");
         }
     }
 
