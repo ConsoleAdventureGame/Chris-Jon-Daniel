@@ -139,7 +139,7 @@ public class ConsoleAdventureGame {
                 String input = in.nextLine();
                 if (input.equals("1")) {
                     // generate random damage between 1 & 50
-                    int damageDealt = rand.nextInt(player.attackDamage);
+                    int damageDealt = rand.nextInt(player.attackDamage) + 10;
                     //  generate random damage taken
                     int damageTaken = rand.nextInt(enemy.enemyAttackDamage);
                     // Take the damage off
@@ -155,7 +155,7 @@ public class ConsoleAdventureGame {
 //                    ENEMY ATTACKS
                     player.health -= damageTaken;
                     System.out.println("\t>" + enemy.name + " " + enemy.specialAttack + " you! You take " + damageTaken + " damage" +
-                            "!");
+                            "!\n");
 
                     // Health Low Print
                     if (player.health < 1) {
@@ -269,11 +269,17 @@ public class ConsoleAdventureGame {
             System.out.println("What would you like to do?");
             System.out.println("1. Continue fighting.");
             System.out.println("2. Leave the Swamp.");
+            System.out.println("3. Check yourself");
+            if(player.numHealthPotions > 0){
+                System.out.println("4. Heal");
+            }
+
+
 
             // Run loop based on user's input
             String input = in.nextLine();
             // If player input is not 1 or 2
-            while (!input.equals("1") && !input.equals("2")) {
+            while (!input.equals("1") && !input.equals("2") && !input.equals("3") && !input.equals("4")) {
                 System.out.println("Invalid command!");
                 input = in.nextLine();
             }
@@ -283,6 +289,33 @@ public class ConsoleAdventureGame {
             } else if (input.equals("2")) {
                 System.out.println("You left the Swamp....");
                 break;
+            } else if(input.equals("3")){
+                System.out.println("\t\n Your stats:");
+                System.out.println("\t Your health: " + player.health + " HP");
+                System.out.println("\t Maximum health: " + player.baseHealth);
+                System.out.println("\t To next level: " + player.toNextLevel + " exp.");
+                System.out.println("\t Strength: " + player.attackDamage);
+                System.out.println("\t Health potions: " + player.numHealthPotions);
+                System.out.println("\t And you have " + player.totalExperience + " total exp points");
+            } else if(input.equals("4") && player.numHealthPotions > 0){
+                if(player.health == player.baseHealth){
+                    System.out.println("Your health is full!");
+                } else {
+                    int actualHeal = player.healthPotionHealAmount;
+                    if (player.health + player.healthPotionHealAmount > player.baseHealth) {
+                        actualHeal = player.baseHealth - player.health;
+                        player.health = player.baseHealth;
+
+                    } else {
+                        player.health += player.healthPotionHealAmount;
+                    }
+                    // Take one health potion away
+                    player.numHealthPotions--;
+                    System.out.println("\t> You drink a health potion, +" + actualHeal + "." + "\n\t>" +
+                            " You now have " + player.health + " HP" + "\n\t> You have " + player.numHealthPotions + " Health " +
+                            "potions left.\n");
+                }
+
             }
         }
         // Leaving Game
@@ -293,8 +326,8 @@ public class ConsoleAdventureGame {
 
     public static void enemyDefeated(Enemy enemy, Hero player){
         Random rand = new Random();
-        System.out.println(" # " + enemy.name + " was defeated! #");
-        System.out.println("# You gained " + enemy.experienceYield + " exp! #");
+        System.out.println("\t> " + enemy.name + " was defeated!\n");
+        System.out.println("# You gained " + enemy.experienceYield + " exp! #\n");
 
         levelUp(player, enemy.experienceYield);
 
@@ -309,8 +342,9 @@ public class ConsoleAdventureGame {
             }
             if (rand.nextInt(100) < player.levelUpChance) {
                 player.attackDamage = player.attackDamage + 5;
+                int attackDisplay = player.attackDamage + 10;
                 System.out.println(" # You got stronger. # ");
-                System.out.println(" # Your base attack is  " + player.attackDamage);
+                System.out.println(" # Your base attack is  " + attackDisplay);
             }
         }
     }
@@ -328,19 +362,19 @@ public class ConsoleAdventureGame {
             System.out.println("# You leveled up! #");
             player.baseHealth += 5;
             player.health = player.baseHealth;
-            System.out.println("# Your health is now " + player.health + "HP! #");
+            System.out.println("# Your health is now " + player.health + "HP! #\n");
             if(player.toNextLevel - spillover <= 0){
                 player.totalExperience += expHolder;
                 levelUp(player, spillover);
             } else {
                 player.totalExperience += exp;
                 player.toNextLevel -= spillover;
-                System.out.println("# " + player.toNextLevel + "exp to level up.\n");
+//                System.out.println("# " + player.toNextLevel + "exp to level up.\n");
             }
         } else {
             player.totalExperience += exp;
             player.toNextLevel -= exp;
-            System.out.println("# " + player.toNextLevel + "exp to level up.\n");
+//            System.out.println("# " + player.toNextLevel + " exp to level up.\n");
         }
     }
 
