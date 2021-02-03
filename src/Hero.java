@@ -1,7 +1,7 @@
 public class Hero {
     int health = 100;
     int baseHealth = 100;
-    int attackDamage = 30;
+    int attackDamage = 25;
 
     int numHealthPotions = 4;
     int healthPotionHealAmount = 30;

@@ -139,7 +139,7 @@ public class ConsoleAdventureGame {
                 String input = in.nextLine();
                 if (input.equals("1")) {
                     // generate random damage between 1 & 50
-                    int damageDealt = rand.nextInt(player.attackDamage);
+                    int damageDealt = rand.nextInt(player.attackDamage) + 10;
                     //  generate random damage taken
                     int damageTaken = rand.nextInt(enemy.enemyAttackDamage);
                     // Take the damage off
@@ -155,7 +155,7 @@ public class ConsoleAdventureGame {
 //                    ENEMY ATTACKS
                     player.health -= damageTaken;
                     System.out.println("\t>" + enemy.name + " " + enemy.specialAttack + " you! You take " + damageTaken + " damage" +
-                            "!");
+                            "!\n");
 
                     // Health Low Print
                     if (player.health < 1) {
@@ -293,8 +293,8 @@ public class ConsoleAdventureGame {
 
     public static void enemyDefeated(Enemy enemy, Hero player){
         Random rand = new Random();
-        System.out.println(" # " + enemy.name + " was defeated! #");
-        System.out.println("# You gained " + enemy.experienceYield + " exp! #");
+        System.out.println("\t> " + enemy.name + " was defeated!\n");
+        System.out.println("# You gained " + enemy.experienceYield + " exp! #\n");
 
         levelUp(player, enemy.experienceYield);
 
@@ -309,8 +309,9 @@ public class ConsoleAdventureGame {
             }
             if (rand.nextInt(100) < player.levelUpChance) {
                 player.attackDamage = player.attackDamage + 5;
+                int attackDisplay = player.attackDamage + 20;
                 System.out.println(" # You got stronger. # ");
-                System.out.println(" # Your base attack is  " + player.attackDamage);
+                System.out.println(" # Your base attack is  " + attackDisplay);
             }
         }
     }
@@ -328,7 +329,7 @@ public class ConsoleAdventureGame {
             System.out.println("# You leveled up! #");
             player.baseHealth += 5;
             player.health = player.baseHealth;
-            System.out.println("# Your health is now " + player.health + "HP! #");
+            System.out.println("# Your health is now " + player.health + "HP! #\n");
             if(player.toNextLevel - spillover <= 0){
                 player.totalExperience += expHolder;
                 levelUp(player, spillover);
@@ -340,7 +341,7 @@ public class ConsoleAdventureGame {
         } else {
             player.totalExperience += exp;
             player.toNextLevel -= exp;
-            System.out.println("# " + player.toNextLevel + "exp to level up.\n");
+            System.out.println("# " + player.toNextLevel + " exp to level up.\n");
         }
     }
 
